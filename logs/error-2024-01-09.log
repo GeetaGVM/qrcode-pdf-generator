@@ -1,0 +1,20 @@
+2024-01-09T11:49:44.222Z [ERROR]: ReferenceError: generateQRCodeImage is not defined, 
+Request: /generate-pdf-from-text, 
+Request Params: {}, 
+Request Body: {"text":"this is geeta"}
+2024-01-09T12:15:27.165Z [ERROR]: Error: ENOENT: no such file or directory, open '/Users/gvmtechnologies/qrcode-pdf-generator/controller/../pdf/generated-pdf.pdf', 
+Request: /generate-pdf, 
+Request Params: {}, 
+Request Body: {"text":"this is geeta"}
+2024-01-09T12:17:17.855Z [ERROR]: ReferenceError: path is not defined, 
+Request: /generate-pdf, 
+Request Params: {}, 
+Request Body: {"text":"this is geeta"}
+2024-01-09T12:18:03.929Z [ERROR]: TypeError [ERR_INVALID_ARG_TYPE]: The "path" argument must be of type string. Received an instance of Uint8Array, 
+Request: /generate-pdf, 
+Request Params: {}, 
+Request Body: {"text":"this is geeta"}
+2024-01-09T12:19:56.362Z [ERROR]: Error: ENOENT: no such file or directory, open '/Users/gvmtechnologies/qrcode-pdf-generator/pdf/generated-pdf.pdf', 
+Request: /generate-pdf, 
+Request Params: {}, 
+Request Body: {"text":"this is geeta"}
