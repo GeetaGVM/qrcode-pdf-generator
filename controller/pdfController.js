@@ -22,7 +22,7 @@ const generatePDF = async (req, res, next) => {
   
       const pdfBytes = await pdfDoc.save();
 
-      const filePath = '../pdffiles/';
+      const filePath = '../pdffiles';
       // const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
       await fs.writeFile(filePath, pdfBytes);
   

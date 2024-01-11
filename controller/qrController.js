@@ -17,7 +17,7 @@ const generateQRCode = async (req, res ,next) => {
 
         const fileName = `qr-${Date.now()}.png`;
 
-        const filePath = '../pdffiles/';
+        const filePath = '../qrcodes';
         
         // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
 
