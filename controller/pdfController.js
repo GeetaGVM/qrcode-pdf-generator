@@ -21,8 +21,9 @@ const generatePDF = async (req, res, next) => {
       });
   
       const pdfBytes = await pdfDoc.save();
-  
-      const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
+
+      const filePath = '/var/task/pdffiles/';
+      // const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
       await fs.writeFile(filePath, pdfBytes);
   
       res.status(200).json({ message: 'PDF generated successfully.', filePath });

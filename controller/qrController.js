@@ -16,8 +16,10 @@ const generateQRCode = async (req, res ,next) => {
         const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, "");
 
         const fileName = `qr-${Date.now()}.png`;
+
+        const filePath = '/var/task/pdffiles/';
         
-        const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
+        // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
 
         fs.writeFileSync(filePath, base64Data, 'base64');
 
