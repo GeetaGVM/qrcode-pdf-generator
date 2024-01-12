@@ -20,7 +20,7 @@ const generateQRCode = async (req, res ,next) => {
         const qrCodePath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
         const fileName = `qr-${Date.now()}.png`;
         const filePath = path.join(qrCodePath, fileName);
-        await fsPromises.mkdir(path.dirname(filePath), { recursive: true });
+        await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
 
         // Create the directory path recursively if it doesn't exist
         // fs.mkdirSync(path.dirname(filePath), { recursive: true });
