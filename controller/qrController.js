@@ -17,14 +17,18 @@ const generateQRCode = async (req, res ,next) => {
 
         const fileName = `qr-${Date.now()}.png`;
 
-        // const filePath = '../qrcodes';
+        const pdfPath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
         const filePath = path.join(pdfPath, fileName);
-
+    
         await fs.mkdir(path.dirname(filePath), { recursive: true });
-        
-        // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
 
-        await fs.writeFileSync(filePath, base64Data, 'base64');
+        // const filePath = path.join(__dirname, '..', 'qrcodes', 'generated-pdf.pdf');
+        await fs.writeFile(filePath, base64Data,'base64');
+
+        
+        // // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
+
+        // await fs.writeFileSync(filePath, base64Data, 'base64');
 
         res.status(200).json({ imagePath: filePath });
     } catch (error) {
