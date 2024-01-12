@@ -24,16 +24,29 @@ const generatePDF = async (req, res, next) => {
      
       const pdfPath = process.env.PDF_PATH || 'generated_files/pdf';
       const filePath = path.join(pdfPath, 'generated-pdf.pdf');
-      fs.mkdir(path.dirname(filePath), { recursive: true });
+      
+      // Create directory recursively and handle errors with a callback
+      fs.mkdir(path.dirname(filePath), { recursive: true }, (err) => {
+        if (err) {
+          console.error('Error creating directory:', err);
+          return next(err); // Pass the error to the next middleware function
+        }
 
-      // const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
-      // await fs.writeFile(filePath, pdfBytes);
-  
-      res.status(200).json({ message: 'PDF generated successfully.', filePath });
+        // Save the PDF file to the specified path
+        fs.writeFile(filePath, pdfBytes, (writeErr) => {
+          if (writeErr) {
+            console.error('Error writing PDF file:', writeErr);
+            return next(writeErr); // Pass the error to the next middleware function
+          }
+
+          // Send a success response if everything goes well
+          res.status(200).json({ message: 'PDF generated successfully.', filePath });
+        });
+      });
     } catch (error) {
       console.error('Error generating PDF:', error);
       return next(error);
     }
-  };
+};
 
-module.exports = {generatePDF};
+module.exports = { generatePDF };
