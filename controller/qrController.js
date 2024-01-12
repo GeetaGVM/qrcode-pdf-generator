@@ -20,7 +20,7 @@ const generateQRCode = async (req, res ,next) => {
         const pdfPath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
         const filePath = path.join(pdfPath, fileName);
     
-        await fs.mkdir(path.dirname(filePath), { recursive: true });
+        // await fs.mkdir(path.dirname(filePath), { recursive: true });
 
         // const filePath = path.join(__dirname, '..', 'qrcodes', 'generated-pdf.pdf');
         await fs.writeFile(filePath, base64Data,'base64');

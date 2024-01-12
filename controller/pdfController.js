@@ -26,7 +26,7 @@ const generatePDF = async (req, res, next) => {
       const pdfPath = process.env.PDF_PATH || 'generated_files/pdf';
       const filePath = path.join(pdfPath, 'generated-pdf.pdf');
   
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
+      // await fs.mkdir(path.dirname(filePath), { recursive: true });
 
       // const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
       await fs.writeFile(filePath, pdfBytes);
