@@ -12,7 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 
-// app.use('/qrcodes', express.static(path.join(__dirname, 'generated_files', 'qrcodes')));
+app.use('/generated_files/qrcodes', express.static(path.join(__dirname, 'generated_files', 'qrcodes')));
+app.use('/generated_files/pdf', express.static(path.join(__dirname, 'generated_files', 'pdf')));
 
 
 // Swagger UI setup
