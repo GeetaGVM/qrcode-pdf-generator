@@ -1,4 +1,4 @@
-const fs = require('fs').promises;
+const fs = require('fs')
 const path = require('path');
 const qr = require('qrcode');
 const { PDFDocument, rgb } = require('pdf-lib');
@@ -20,7 +20,7 @@ const generateQRCode = async (req, res ,next) => {
         const qrCodePath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
         const fileName = `qr-${Date.now()}.png`;
         const filePath = path.join(qrCodePath, fileName);
-        await fs.promises.mkdir(path.dirname(filePath), { recursive: true });
+        fs.mkdir(path.dirname(filePath), { recursive: true });
 
         // Create the directory path recursively if it doesn't exist
         // fs.mkdirSync(path.dirname(filePath), { recursive: true });
