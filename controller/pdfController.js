@@ -5,11 +5,11 @@ const path = require('path');
 const generatePDF = async (req, res, next) => {
     try {
       const { text } = req.body;
-
+  
       const pdfDoc = await PDFDocument.create();
-
+  
       const page = pdfDoc.addPage();
-
+  
       const fontSize = 20;
       const font = await pdfDoc.embedFont(StandardFonts.Helvetica);
       page.drawText(text, {
@@ -19,22 +19,17 @@ const generatePDF = async (req, res, next) => {
         font: font,
         color: rgb(0, 0, 0),
       });
-
+  
       const pdfBytes = await pdfDoc.save();
 
-      // Define the absolute path where you want to save the PDF file
       const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
-
-      // Ensure the directory exists before attempting to write the file
-      await fs.mkdir(path.dirname(filePath), { recursive: true });
-
       await fs.writeFile(filePath, pdfBytes);
-
+  
       res.status(200).json({ message: 'PDF generated successfully.', filePath });
     } catch (error) {
       console.error('Error generating PDF:', error);
       return next(error);
     }
-};
+  };
 
-module.exports = { generatePDF };
+module.exports = {generatePDF};
