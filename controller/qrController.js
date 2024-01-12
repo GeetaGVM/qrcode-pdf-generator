@@ -15,17 +15,19 @@ const generateQRCode = async (req, res ,next) => {
         
         const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, "");
 
+        // const fileName = `qr-${Date.now()}.png`;
+
+        const qrCodePath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
         const fileName = `qr-${Date.now()}.png`;
+        const filePath = path.join(qrCodePath, fileName);
+        await fsPromises.mkdir(path.dirname(filePath), { recursive: true });
 
-        const filePath = path.join(__dirname, fileName);
-
-
-        // const qrCodePath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
-        // const filePath = path.join(__dirname, '..', qrCodePath, fileName);
+        // Create the directory path recursively if it doesn't exist
+        // fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
         // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
 
-        fs.writeFileSync(filePath, base64Data, 'base64');
+        // fs.writeFileSync(filePath, base64Data, 'base64');
 
         res.status(200).json({ imagePath: filePath });
     } catch (error) {

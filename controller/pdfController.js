@@ -21,14 +21,13 @@ const generatePDF = async (req, res, next) => {
       });
   
       const pdfBytes = await pdfDoc.save();
-      const filePath = path.join(__dirname, 'generated-pdf.pdf');
-
      
-      // const pdfPath = process.env.PDF_PATH || 'generated_files/pdf';
-      // const filePath = path.join(__dirname, '..', pdfPath, 'generated-pdf.pdf');
+      const pdfPath = process.env.PDF_PATH || 'generated_files/pdf';
+      const filePath = path.join(pdfPath, 'generated-pdf.pdf');
+      await fsPromises.mkdir(path.dirname(filePath), { recursive: true });
 
       // const filePath = path.join(__dirname, '..', 'pdffiles', 'generated-pdf.pdf');
-      await fs.writeFile(filePath, pdfBytes);
+      // await fs.writeFile(filePath, pdfBytes);
   
       res.status(200).json({ message: 'PDF generated successfully.', filePath });
     } catch (error) {
