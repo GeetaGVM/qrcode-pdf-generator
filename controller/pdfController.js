@@ -1,8 +1,8 @@
 const { PDFDocument, rgb, StandardFonts } = require('pdf-lib');
-const fs = require('fs').promises;
-const path = require('path');
 const fs = require('fs')
-// const fsPromises = require('fs').promises;
+const path = require('path');
+// const fs = require('fs')
+const fsPromises = require('fs').promises;
 
 const generatePDF = async (req, res, next) => {
     try {
@@ -29,7 +29,7 @@ const generatePDF = async (req, res, next) => {
       const filePath = path.join(pdfDir, 'generated-pdf.pdf');
 
       if (!fs.existsSync(pdfDir)) {
-          await fs.mkdir(pdfDir, { recursive: true });
+          await fsPromises.mkdir(pdfDir, { recursive: true });
       }
 
       const pdfBytes = await pdfDoc.save();
