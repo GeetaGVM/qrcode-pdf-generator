@@ -97,7 +97,10 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
   `}`
 
 
-**Text to PDF**
+  
+
+
+### **Text To PDF**
 
 `To convert plain text into a PDF document, send a POST request to the /text-to-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
 
