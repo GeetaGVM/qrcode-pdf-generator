@@ -97,9 +97,8 @@ To convert plain text into a PDF document, send a POST request to the /generate-
 
 * **Success** (200 OK):  
     
-  	{"message":"PDF generated successfully.",
+  	{"message":"PDF generated successfully.","filePath":"/Users/username/Downloads/generated-file.pdf"}
 
-    "filePath":"/Users/username/Downloads/generated-file.pdf"}  
     
 * **Error**:
 
