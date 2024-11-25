@@ -152,11 +152,5 @@ Converts the provided text into a PDF document and saves it in the **Downloads**
 
 **Response** (200 OK):
 
-	{ 
-
-  "message": "PDF generated successfully.",
-
-  "filePath": "/Users/username/Downloads/generated-pdf.pdf" 
-
-}
+	{ "message": "PDF generated successfully.", "filePath": "/Users/username/Downloads/generated-pdf.pdf"}
 
