@@ -39,7 +39,8 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **Endpoint**: `/generate-qrcode`  
 * **Body** (JSON):  
     
-  `{`  
+   	`{`
+
     `"text": "Your text here"`  
   `}`
 
@@ -95,6 +96,7 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 
   `}`
 
+
 **Text to PDF**
 
 `To convert plain text into a PDF document, send a POST request to the /text-to-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
@@ -113,14 +115,12 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 #### **`Response`**
 
 * **`Success`** `(200 OK):`  
-  `{`
+    
+  	`{`
 
-    `"message": "PDF generated successfully.",`
-
-    `"filePath": "/Users/username/Downloads/generated-pdf.pdf"`
-
-  `}`
-
+    `"message": "PDF generated successfully.",`  
+    `"filePath": "/Users/username/Downloads/generated-pdf.pdf"`  
+  `}`  
 * **`Error`**`:`
 
   `If text is not provided, you will get a 400 status with an error message:`
@@ -184,8 +184,7 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
     `"text": "This is the text that will appear in the PDF document."`  
   `}`
 
-**`Response`** `(200 OK):`
-
+**`Response`** `(200 OK):`  
 	`{`
 
   `"message": "PDF generated successfully.",`
