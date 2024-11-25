@@ -6,157 +6,153 @@ This project provides three main functionalities:
 2. **QR Code to Text**: Decode a QR code image file and extract the embedded text.  
 3. **Text to PDF**: Convert plain text into a PDF document and save it on the system.  
    The project is built using Node.js with the following libraries:  
-* `sharp` for image processing.  
-* `qrcode-reader` for QR code decoding.  
-* `qrcode` for generating QR codes.  
-* `pdf-lib` for generating PDFs.
+* sharp for image processing.  
+* qrcode-reader for QR code decoding.  
+* qrcode for generating QR codes.  
+* pdf-lib for generating PDFs.
 
 ## **Installation**
 
 1. Clone the repository:  
-   **`git clone https://github.com/your-username/qrcode-pdf-generator.git`**
-
-   
-
+   git clone https://github.com/your-username/qrcode-pdf-generator.git  
+     
 2. Navigate to the project directory:  
-   **`cd qrcode-pdf-generator`**
+   cd qrcode-pdf-generator
 
    
 
 3. Install the necessary dependencies:  
-   **`npm install`**  
-   This will install the required packages including `sharp`, `qrcode-reader`, `qrcode`, `pdf-lib`, and `express`.
+   npm install  
+   This will install the required packages including sharp, qrcode-reader, qrcode, pdf-lib, and express.
 
 ## **Usage**
 
 ### **Text to QR Code**
 
-To generate a QR code from text, send a POST request to the `/generate-qrcode` endpoint. The generated QR code image will be saved in the **Downloads** folder.
+To generate a QR code from text, send a POST request to the /generate-qrcode endpoint. The generated QR code image will be saved in the **Downloads** folder.
 
 #### **Request**
 
 * **Method**: POST  
-* **Endpoint**: `/generate-qrcode`  
+* **Endpoint**: /generate-qrcode  
 * **Body** (JSON):  
     
-   	**`{"text": "Your text here"}`**
+   	{"text": "Your text here"}
 
 
 #### **Response**
 
-* **`Success`** `(200 OK):`  
+* **Success** (200 OK):  
     
-  **`{"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}`**  
+  {"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}  
     
-* **`Error`**`:`  
-  `If text is not provided, you will get a 400 status with an error message:`  
-  **`{"error": "Text is required!"}`**
+* **Error**:  
+  If text is not provided, you will get a 400 status with an error message:  
+  {"error": "Text is required\!"}
 
 ### **QR Code to Text**
 
-`To decode a QR code from an image file, send a POST request to the /decode-qrcode endpoint. The image should be provided via a file upload.`
+To decode a QR code from an image file, send a POST request to the /decode-qrcode endpoint. The image should be provided via a file upload.
 
 #### **Request**
 
-* **`Method`**`: POST`  
-* **`Endpoint`**`: /decode-qrcode`  
-* **`Body`** `(multipart/form-data):`  
-  * `file: The uploaded QR code image file (e.g., uploaded-image.png).`
+* **Method**: POST  
+* **Endpoint**: /decode-qrcode  
+* **Body** (multipart/form-data):  
+  * file: The uploaded QR code image file (e.g., uploaded-image.png).
 
 #### **Response**
 
-* **`Success`** `(200 OK):`
+* **Success** (200 OK):
+
+  { "decodedText": "The decoded content of the QR code" }
 
 
-  **`{ "decodedText": "The decoded content of the QR code" }`**  
-    
-* **`Error`**`:`  
-- `If the file is not found, you will get a 400 status with an error message:`
+* **Error**:  
+- If the file is not found, you will get a 400 status with an error message:
 
-  **`{"error": "File does not exist"}`** 
+  {"error": "File does not exist"} 
 
+- If the file Path is not found, you will get a 400 status with an error message:
 
-- `If the image can't be decoded as a valid QR code, you will     get a 400 status with an error message:`
+  {"error": "File Path Requiredt"} 
 
-  **`{"error": "Failed to decode the QR code"}`**
+- If the image can't be decoded as a valid QR code, you will    get a 400 status with an error message:
 
-
-  
-
+  {"error": "Failed to decode the QR code"}
 
 ### **Text To PDF**
 
-`To convert plain text into a PDF document, send a POST request to the /generate-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
+To convert plain text into a PDF document, send a POST request to the /generate-pdf endpoint. The generated PDF will be saved in the **Downloads** folder.
 
-#### **`Request`**
+#### **Request**
 
-* **`Method`**`: POST`  
-* **`Endpoint`**`: /generate-pdf`  
-* **`Body`** `(JSON):`  
+* **Method**: POST  
+* **Endpoint**: /generate-pdf  
+* **Body** (JSON):  
     
-     `{ "text": "This is the text that will appear in the PDF document." }`
+     { "text":"This is the text that will appear in the PDF document." }
 
+#### **Response**
 
-#### **`Response`**
-
-* **`Success`** `(200 OK):`  
+* **Success** (200 OK):  
     
-  	`{ "message": "PDF generated successfully.",`
+  	{"message":"PDF generated successfully.",
 
-    **`"filePath": "/Users/username/Downloads/generated-file.pdf" }`**  
+    "filePath":"/Users/username/Downloads/generated-file.pdf"}  
     
-* **`Error`**`:`
+* **Error**:
 
-  `If text is not provided, you will get a 400 status with an error message:`
+  If text is not provided, you will get a 400 status with an error message:
 
-  **`{"error": "Text is required to generate a PDF!"}`**
+  {"error": "Text is required to generate a PDF\!"}
 
+## **API Endpoints**
 
-## **`API Endpoints`**
+### **/generate-qrcode**
 
-### **`/generate-qrcode`**
+Generates a QR code from the provided text and saves it as a PNG image in the **Downloads** folder.
 
-`Generates a QR code from the provided text and saves it as a PNG image in the Downloads folder.`
+#### **Request**
 
-#### **`Request`**
-
-* **`Method`**`: POST`  
-* **`Request body`**`:`  
+* **Method**: POST  
+* **Request body**:  
     
-  **`{"text": "Your text here"}`**
+  {"text": "Your text here"}
 
-**`Response`** `(200 OK):`
+**Response** (200 OK):
 
-	`{"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}`
+	{"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}
 
-### **`/decode-qrcode`**
+### **/decode-qrcode**
 
-`Decodes a QR code from an image file and returns the decoded text.`
+Decodes a QR code from an image file and returns the decoded text.
 
-#### **`Request`**
+#### **Request**
 
-* **`Method`**`: POST`  
-* **`Request body`** `(multipart/form-data):`  
-  * `file: The QR code image file.`	
+* **Method**: POST  
+* **Request body** (multipart/form-data):  
+  * file: The QR code image file.	
 
-**`Response`** `(200 OK):`
+**Response** (200 OK):
 
-**`{"decodedText": "The decoded content of the QR code"}`**
+{"decodedText": "The decoded content of the QR code"}
 
-### **`/generate-pdf`**
+### **/generate-pdf**
 
-`Converts the provided text into a PDF document and saves it in the Downloads folder.`
+Converts the provided text into a PDF document and saves it in the **Downloads** folder.
 
-#### **`Request`**
+#### **Request**
 
-* **`Method`**`: POST`  
-* **`Request body`**`:`
+* **Method**: POST  
+* **Request body**:
 
-  **`{"text":"This is the text that will appear in the PDFdocument."}`**
+  {"text":"This is the text that will appear in the PDFdocument."}
 
-**`Response`** `(200 OK):`
 
-	**`{  "message": "PDF generated successfully.",`**
+**Response** (200 OK):
 
-  **`"filePath": "/Users/username/Downloads/generated-pdf.pdf" }`**
+	{"message": "PDF generated successfully.",
+
+  "filePath": "/Users/username/Downloads/generated-pdf.pdf"}
 
