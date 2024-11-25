@@ -27,10 +27,6 @@ This project provides three main functionalities:
    `npm install`  
    This will install the required packages including `sharp`, `qrcode-reader`, `qrcode`, `pdf-lib`, and `express`.
 
-## 
-
-## 
-
 ## **Usage**
 
 ### **Text to QR Code**
@@ -42,6 +38,7 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **Method**: POST  
 * **Endpoint**: `/generate-qrcode`  
 * **Body** (JSON):  
+    
   `{`  
     `"text": "Your text here"`  
   `}`
@@ -49,21 +46,17 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 
 ####  **`Response`**
 
-**`Success`** `(200 OK):`  
-`{`
-
-  `"imagePath": "/Users/username/Downloads/qr-1627555555555.png"`
-
-`}`
-
-**`Error`**`:`
-
-* `If text is not provided, you will get a 400 status with an error message:`  
+* **`Success`** `(200 OK):`  
+    
+  `{`  
+    `"imagePath": "/Users/username/Downloads/qr-1627555555555.png"`  
+  `}`  
+    
+* **`Error`**`:`  
+  `If text is not provided, you will get a 400 status with an error message:`  
   `{`  
     `"error": "Text is required!"`  
-  `}`  
-  
-
+  `}`
 
 ### **`QR Code to Text`**
 
@@ -79,11 +72,11 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 #### **`Response`**
 
 * **`Success`** `(200 OK):`  
-  `{ "decodedText": "The decoded content of the QR code" }`
-
-**`Error`**`:`
-
-* `If the file is not found, you will get a 400 status with an error message:`  
+  `{`   
+  `"decodedText": "The decoded content of the QR code"`   
+  `}`  
+* **`Error`**`:`  
+  `If the file is not found, you will get a 400 status with an error message:`  
   `{`  
     `"error": "File does not exist"`  
   `}`
@@ -102,8 +95,7 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **`Method`**`: POST`  
 * **`Endpoint`**`: /text-to-pdf`
 
-**`Body`** `(JSON):`
-
+**`Body`** `(JSON):`  
 	`{`
 
   `"text": "This is the text that will appear in the PDF document."`
@@ -116,14 +108,13 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
   `{`  
     `"message": "PDF generated successfully.",`  
     `"filePath": "/Users/username/Downloads/generated-pdf.pdf"`  
-  `}`
-
-**`Error`**`:`
-
-* `If text is not provided, you will get a 400 status with an error message:`  
+  `}`  
+* **`Error`**`:`  
+  `If text is not provided, you will get a 400 status with an error message:`  
   `{`  
     `"error": "Text is required to generate a PDF!"`  
   `}`
+
 
 ## **`API Endpoints`**
 
@@ -173,3 +164,8 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
     `"message": "PDF generated successfully.",`  
     `"filePath": "/Users/username/Downloads/generated-pdf.pdf"`  
   `}`  
+  
+
+
+  
+
