@@ -35,10 +35,9 @@ To generate a QR code from text, send a POST request to the /generate-qrcode end
 
 * **Method**: POST  
 * **Endpoint**: /generate-qrcode  
-* **Body** (JSON):  
-    
-   	{"text": "Your text here"}
+* **Body** (JSON):
 
+ 	{"text": "Your text here"}
 
 #### **Response**
 
@@ -48,7 +47,9 @@ To generate a QR code from text, send a POST request to the /generate-qrcode end
     
 * **Error**:  
   If text is not provided, you will get a 400 status with an error message:  
+    
   {"error": "Text is required\!"}
+
 
 ### **QR Code to Text**
 
