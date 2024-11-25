@@ -14,17 +14,17 @@ This project provides three main functionalities:
 ## **Installation**
 
 1. Clone the repository:  
-   `git clone https://github.com/your-username/qrcode-pdf-generator.git`
+   **`git clone https://github.com/your-username/qrcode-pdf-generator.git`**
 
    
 
 2. Navigate to the project directory:  
-   `cd qrcode-pdf-generator`
+   **`cd qrcode-pdf-generator`**
 
    
 
 3. Install the necessary dependencies:  
-   `npm install`  
+   **`npm install`**  
    This will install the required packages including `sharp`, `qrcode-reader`, `qrcode`, `pdf-lib`, and `express`.
 
 ## **Usage**
@@ -39,17 +39,18 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **Endpoint**: `/generate-qrcode`  
 * **Body** (JSON):  
     
-   	`{"text": "Your text here"}`
+   	**`{"text": "Your text here"}`**
 
 
 #### **Response**
 
 * **`Success`** `(200 OK):`  
     
-  `{"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}`  
+  **`{"imagePath": "/Users/username/Downloads/qr-1627555555555.png"}`**  
+    
 * **`Error`**`:`  
   `If text is not provided, you will get a 400 status with an error message:`  
-  `{"error": "Text is required!"}`
+  **`{"error": "Text is required!"}`**
 
 ### **QR Code to Text**
 
@@ -66,17 +67,18 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 
 * **`Success`** `(200 OK):`
 
-  `{ "decodedText": "The decoded content of the QR code" }`
 
+  **`{ "decodedText": "The decoded content of the QR code" }`**  
+    
 * **`Error`**`:`  
 - `If the file is not found, you will get a 400 status with an error message:`
 
-  `{"error": "File does not exist"}` 
+  **`{"error": "File does not exist"}`** 
 
 
 - `If the image can't be decoded as a valid QR code, you will     get a 400 status with an error message:`
 
-  `{"error": "Failed to decode the QR code"}`
+  **`{"error": "Failed to decode the QR code"}`**
 
 
   
@@ -84,15 +86,16 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 
 ### **Text To PDF**
 
-`To convert plain text into a PDF document, send a POST request to the /text-to-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
+`To convert plain text into a PDF document, send a POST request to the /generate-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
 
 #### **`Request`**
 
 * **`Method`**`: POST`  
-* **`Endpoint`**`: /text-to-pdf`  
+* **`Endpoint`**`: /generate-pdf`  
 * **`Body`** `(JSON):`  
     
      `{ "text": "This is the text that will appear in the PDF document." }`
+
 
 #### **`Response`**
 
@@ -100,13 +103,13 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
     
   	`{ "message": "PDF generated successfully.",`
 
-    `"filePath": "/Users/username/Downloads/generated-pdf.pdf" }`  
+    **`"filePath": "/Users/username/Downloads/generated-file.pdf" }`**  
     
 * **`Error`**`:`
 
   `If text is not provided, you will get a 400 status with an error message:`
 
-  `{"error": "Text is required to generate a PDF!"}`
+  **`{"error": "Text is required to generate a PDF!"}`**
 
 
 ## **`API Endpoints`**
@@ -120,7 +123,7 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **`Method`**`: POST`  
 * **`Request body`**`:`  
     
-  `{"text": "Your text here"}`
+  **`{"text": "Your text here"}`**
 
 **`Response`** `(200 OK):`
 
@@ -138,9 +141,9 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 
 **`Response`** `(200 OK):`
 
-`{"decodedText": "The decoded content of the QR code"}`
+**`{"decodedText": "The decoded content of the QR code"}`**
 
-### **`/text-to-pdf`**
+### **`/generate-pdf`**
 
 `Converts the provided text into a PDF document and saves it in the Downloads folder.`
 
@@ -149,11 +152,11 @@ To generate a QR code from text, send a POST request to the `/generate-qrcode` e
 * **`Method`**`: POST`  
 * **`Request body`**`:`
 
-  `{"text":"This is the text that will appear in the PDFdocument."}`
+  **`{"text":"This is the text that will appear in the PDFdocument."}`**
 
 **`Response`** `(200 OK):`
 
-	`{  "message": "PDF generated successfully.",`
+	**`{  "message": "PDF generated successfully.",`**
 
-  `"filePath": "/Users/username/Downloads/generated-pdf.pdf" }`
+  **`"filePath": "/Users/username/Downloads/generated-pdf.pdf" }`**
 
