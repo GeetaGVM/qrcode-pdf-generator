@@ -29,58 +29,45 @@ This project provides three main functionalities:
 
 ## **Usage**
 
-* ### **Text to QR Code**
+### **Text to QR Code**
 
-  To generate a QR code from text, send a POST request to the `/generate-qrcode` endpoint. The generated QR code image will be saved in the **Downloads** folder.
+To generate a QR code from text, send a POST request to the `/generate-qrcode` endpoint. The generated QR code image will be saved in the **Downloads** folder.
 
-  #### **Request**
+#### **Request**
 
 * **Method**: POST  
 * **Endpoint**: `/generate-qrcode`  
-* **Body** (JSON):
-
+* **Body** (JSON):  
     
-  `{`
-
-    `"text": "Your text here"`
-
+  `{`  
+    `"text": "Your text here"`  
   `}`
 
 
-  ####  **`Response`**
+#### **Response**
 
-* **`Success`** `(200 OK):`
-
-    
-  `{`
-
-    `"imagePath": "/Users/username/Downloads/qr-1627555555555.png"`
-
+* **`Success`** `(200 OK):`  
+  `{`  
+    `"imagePath": "/Users/username/Downloads/qr-1627555555555.png"`  
+  `}`  
+* **`Error`**`:`  
+  `If text is not provided, you will get a 400 status with an error message:`  
+  `{`  
+    `"error": "Text is required!"`  
   `}`
 
+### **QR Code to Text**
 
-* **`Error`**`:`
+`To decode a QR code from an image file, send a POST request to the /decode-qrcode endpoint. The image should be provided via a file upload.`
 
-  `If text is not provided, you will get a 400 status with an error message:`
-
-  `{`
-
-    `"error": "Text is required!"`
-
-  `}`
-
-* ### **`QR Code to Text`**
-
-  `To decode a QR code from an image file, send a POST request to the /decode-qrcode endpoint. The image should be provided via a file upload.`
-
-  #### **`Request`**
+#### **Request**
 
 * **`Method`**`: POST`  
 * **`Endpoint`**`: /decode-qrcode`  
 * **`Body`** `(multipart/form-data):`  
   * `file: The uploaded QR code image file (e.g., uploaded-image.png).`
 
-  #### **`Response`**
+#### **Response**
 
 * **`Success`** `(200 OK):`
 
@@ -90,9 +77,8 @@ This project provides three main functionalities:
 
   `}`
 
-* **`Error`**`:`
-
-  `If the file is not found, you will get a 400 status with an error message:`
+* **`Error`**`:`  
+- `If the file is not found, you will get a 400 status with an error message:`
 
   `{`
 
@@ -101,7 +87,7 @@ This project provides three main functionalities:
   `}`
 
 
-* `If the image can't be decoded as a valid QR code, you will get a 400 status with an error message:`
+- `If the image can't be decoded as a valid QR code, you will     get a 400 status with an error message:`
 
   `{`
 
@@ -109,10 +95,11 @@ This project provides three main functionalities:
 
   `}`
 
-* **`Text to PDF`**  
-  `To convert plain text into a PDF document, send a POST request to the /text-to-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
+**Text to PDF**
 
-  #### **`Request`**
+`To convert plain text into a PDF document, send a POST request to the /text-to-pdf endpoint. The generated PDF will be saved in the Downloads folder.`
+
+#### **`Request`**
 
 * **`Method`**`: POST`  
 * **`Endpoint`**`: /text-to-pdf`  
@@ -123,7 +110,7 @@ This project provides three main functionalities:
 
   `}`
 
-  #### **`Response`**
+#### **`Response`**
 
 * **`Success`** `(200 OK):`  
   `{`
@@ -176,7 +163,7 @@ This project provides three main functionalities:
 * **`Request body`** `(multipart/form-data):`  
   * `file: The QR code image file.`	
 
-**`Response`**`:`
+**`Response`** `(200 OK):`
 
 `{`
 
@@ -197,7 +184,8 @@ This project provides three main functionalities:
     `"text": "This is the text that will appear in the PDF document."`  
   `}`
 
-**`Response`**`:`  
+**`Response`** `(200 OK):`
+
 	`{`
 
   `"message": "PDF generated successfully.",`
