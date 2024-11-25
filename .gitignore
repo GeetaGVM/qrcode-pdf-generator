@@ -1,0 +1,21 @@
+# Node.js Modules
+node_modules/
+
+# npm debug logs
+npm-debug.log*
+
+# Yarn lock files and logs (if applicable)
+yarn.lock
+yarn-debug.log*
+yarn-error.log*
+
+# Optional: Ignore `package-lock.json` (if you're using npm)
+package-lock.json
+
+# Optional: Ignore `pnpm-lock.yaml` (if you're using pnpm)
+pnpm-lock.yaml
+
+# Ignore build directories and temporary files
+dist/
+build/
+.env

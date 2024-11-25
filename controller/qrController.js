@@ -1,9 +1,9 @@
 const fs = require('fs').promises;
 const path = require('path');
 const qr = require('qrcode');
-const { PDFDocument, rgb } = require('pdf-lib');
+const os = require('os');
 
-const generateQRCode = async (req, res ,next) => {
+const generateQRCode = async (req, res, next) => {
     try {
         const { text } = req.body;
 
@@ -11,30 +11,26 @@ const generateQRCode = async (req, res ,next) => {
             return res.status(400).json({ error: 'Text is required!' });
         }
 
+        // Generate the QR code as a Data URL (Base64 string)
         const qrCodeDataUrl = await qr.toDataURL(text);
-        
+
+        // Remove the "data:image/png;base64," prefix to extract the Base64-encoded data
         const base64Data = qrCodeDataUrl.replace(/^data:image\/png;base64,/, "");
 
         const fileName = `qr-${Date.now()}.png`;
 
-        const pdfPath = process.env.QR_CODE_PATH || 'generated_files/qrcodes';
-        const filePath = path.join(pdfPath, fileName);
-    
+        const userHome = os.homedir();
+        const downloadsPath = path.join(userHome, 'Downloads');
+        const filePath = path.join(downloadsPath, fileName);
+
         await fs.mkdir(path.dirname(filePath), { recursive: true });
 
-        // const filePath = path.join(__dirname, '..', 'qrcodes', 'generated-pdf.pdf');
-        await fs.writeFile(filePath, base64Data,'base64');
-
-        
-        // // const filePath = path.join(__dirname, '..', 'qrcodes', fileName);
-
-        // await fs.writeFileSync(filePath, base64Data, 'base64');
+        await fs.writeFile(filePath, base64Data, 'base64');
 
         res.status(200).json({ imagePath: filePath });
     } catch (error) {
-      return next(error);
+        return next(error);
     }
 };
- 
 
-module.exports = {generateQRCode};
+module.exports = { generateQRCode };

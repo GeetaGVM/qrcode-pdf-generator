@@ -20,7 +20,7 @@ app.use('/generated_files/pdf', express.static(path.join(__dirname, 'generated_f
 app.use('/doc', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
-app.get('/', (req, res) => {
+app.get('/Home', (req, res) => {
   res.send('Hello from Node.js');
 });
 
